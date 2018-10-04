@@ -24,14 +24,8 @@ public class Application {
     private static void runEventsCycle(SmartHome smartHome) {
         SensorEvent event = RandomSensorEventProvider.getNextSensorEvent();
         while (event != null) {
-            System.out.println("Got event: " + event);
-            if (event.getType() == LIGHT_ON || event.getType() == LIGHT_OFF) {
-                LightsEventProcessor.processLightEvent(smartHome, event);
-            }
-            if (event.getType() == DOOR_OPEN || event.getType() == DOOR_CLOSED) {
-                DoorEventProcessor.processDoorEvent(smartHome, event);
-            }
-            event = RandomSensorEventProvider.getNextSensorEvent();
+           WorkingOutExternalEvents.eventProcessing(smartHome,event);
+           event = RandomSensorEventProvider.getNextSensorEvent();
         }
     }
 }
