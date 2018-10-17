@@ -1,4 +1,4 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.object;
 
 import java.util.Collection;
 
@@ -23,5 +23,9 @@ public class Room {
 
     public String getName() {
         return name;
+    }
+
+    public Light getLightById(String objectId) {
+        return null;
     }
 }

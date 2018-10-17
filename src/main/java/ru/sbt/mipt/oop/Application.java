@@ -1,16 +1,20 @@
 package ru.sbt.mipt.oop;
 
-import com.google.gson.Gson;
+import ru.sbt.mipt.oop.event.*;
+import ru.sbt.mipt.oop.event.processor.DoorEventProcessor;
+import ru.sbt.mipt.oop.event.processor.EventProcessor;
+import ru.sbt.mipt.oop.event.processor.HallDoorEventProcessor;
+import ru.sbt.mipt.oop.event.processor.LightsEventProcessor;
+import ru.sbt.mipt.oop.loader.JSSmartHomeLoader;
+import ru.sbt.mipt.oop.loader.SmartHomeLoader;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
-import static ru.sbt.mipt.oop.SensorEventType.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class Application {
 
-    private static SmartHomeLoader smartHomeLoader = new FileSmartHomeLoader();
+    private static SmartHomeLoader smartHomeLoader = new JSSmartHomeLoader();
 
     public static void setSmartHomeLoader(SmartHomeLoader smartHomeLoader) {
         Application.smartHomeLoader = smartHomeLoader;
@@ -23,9 +27,22 @@ public class Application {
 
     private static void runEventsCycle(SmartHome smartHome) {
         SensorEvent event = RandomSensorEventProvider.getNextSensorEvent();
+        Collection<EventProcessor> eventProcessors = configureEventProcessors();
         while (event != null) {
-           WorkingOutExternalEvents.eventProcessing(smartHome,event);
-           event = RandomSensorEventProvider.getNextSensorEvent();
+            System.out.println("Got event: " + event);
+            for (EventProcessor eventProcessor : eventProcessors) {
+                eventProcessor.processEvent(smartHome, event);
+            }
+            event = RandomSensorEventProvider.getNextSensorEvent();
         }
     }
+
+    private static Collection<EventProcessor> configureEventProcessors() {
+        Collection<EventProcessor> eventProcessors = new ArrayList<>();
+        eventProcessors.add(new LightsEventProcessor());
+        eventProcessors.add(new DoorEventProcessor());
+        eventProcessors.add(new HallDoorEventProcessor());
+        return eventProcessors;
+    }
+
 }
