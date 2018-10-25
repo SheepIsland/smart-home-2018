@@ -1,6 +1,4 @@
-package ru.sbt.mipt.oop.loader;
-
-import ru.sbt.mipt.oop.SmartHome;
+package ru.sbt.mipt.oop;
 
 import java.io.IOException;
 
@@ -9,6 +7,5 @@ import java.io.IOException;
  */
 public interface SmartHomeLoader {
     SmartHome loadSmartHome() throws IOException;
-    void saveSmartHome(String pathToSave) throws IOException;
 
 }

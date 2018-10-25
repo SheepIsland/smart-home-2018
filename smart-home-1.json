@@ -17,6 +17,10 @@
           "isOpen": false
         }
       ],
+      "alarm": {
+        "id": "1",
+        "password": "1111"
+      },
       "name": "kitchen"
     },
     {
