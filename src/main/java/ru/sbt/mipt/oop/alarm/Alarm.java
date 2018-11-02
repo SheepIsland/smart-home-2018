@@ -9,7 +9,6 @@ import ru.sbt.mipt.oop.Printable;
  */
 public class Alarm implements Actionable, Printable {
 
-    private String inputCode;
     private String password;
     private AlarmState state;
     private final String id;
@@ -24,16 +23,21 @@ public class Alarm implements Actionable, Printable {
         return id;
     }
 
-    public void setInputCode(String inputCode) {
-        this.inputCode = inputCode;
-    }
 
-    public void activate(){
+    public void activate(String inputCode){
         state = state.activate(inputCode, password);
     }
 
-    public void deactivate(){
+    public void deactivate(String inputCode){
         state = state.deactivate(inputCode, password);
+    }
+
+    public void danger(){
+        state = state.danger();
+    }
+
+    public boolean isActivated(){
+        return state.isActivated();
     }
 
     @Override

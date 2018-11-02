@@ -11,8 +11,7 @@ public class DeactivatedState implements AlarmState {
             System.out.println("Alarm is deactivated");
             return new ActivatedState();
         } else {
-            System.out.println("Alarm is in danger!!!");
-            return new DangerSignalState();
+            return danger();
         }
     }
 
@@ -20,5 +19,11 @@ public class DeactivatedState implements AlarmState {
     public AlarmState deactivate(String inputCode, String password) {
         System.out.println("Alarm is already deactivated");
         return this;
+    }
+
+    @Override
+    public AlarmState danger() {
+        System.out.println("Alarm is in danger!!!");
+        return new DangerSignalState();
     }
 }

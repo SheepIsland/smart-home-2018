@@ -9,13 +9,11 @@ import java.util.Collection;
 public class Room implements Actionable, Printable{
     private Collection<Light> lights;
     private Collection<Door> doors;
-    private Alarm alarm;
     private String name;
 
     public Room(Collection<Light> lights, Collection<Door> doors, Alarm alarm, String name) {
         this.lights = lights;
         this.doors = doors;
-        this.alarm = alarm;
         this.name = name;
     }
 
@@ -49,13 +47,12 @@ public class Room implements Actionable, Printable{
     @Override
     public void executeAction(Action action) {
         //TODO
-//        action.execute(this);
-//        for (Door door : doors) {
-//            door.executeAction(action);
-//        }
-//        for (Light light: lights) {
-//            light.executeAction(action);
-//        }
-        //alarm.executeAction(action);
+        action.execute(this);
+        for (Door door : doors) {
+            door.executeAction(action);
+        }
+        for (Light light: lights) {
+            light.executeAction(action);
+        }
     }
 }

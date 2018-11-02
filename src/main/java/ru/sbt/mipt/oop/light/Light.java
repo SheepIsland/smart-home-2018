@@ -27,6 +27,7 @@ public class Light implements Actionable, Printable {
 
     @Override
     public void executeAction(Action action) {
+
         action.execute(this);
     }
 

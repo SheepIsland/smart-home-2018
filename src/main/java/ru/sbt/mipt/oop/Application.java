@@ -1,6 +1,6 @@
 package ru.sbt.mipt.oop;
 
-import ru.sbt.mipt.oop.alarm.AlarmEventProcessor;
+import ru.sbt.mipt.oop.alarm.AlarmActivatedEventProcessor;
 import ru.sbt.mipt.oop.door.DoorEventProcessor;
 import ru.sbt.mipt.oop.light.LightsEventProcessor;
 
@@ -14,10 +14,14 @@ public class Application {
 
     public static void main(String... args) throws IOException {
         SmartHome smartHome = smartHomeLoader.loadSmartHome();
-        homeEventsObserver.registerEventProcessor(new LightsEventProcessor());
-        homeEventsObserver.registerEventProcessor(new DoorEventProcessor());
-        homeEventsObserver.registerEventProcessor(new AlarmEventProcessor());
+        homeEventsObserver.registerEventProcessor(new AlarmActivatedEventProcessor(new LightsEventProcessor()));
+        homeEventsObserver.registerEventProcessor( new AlarmActivatedEventProcessor(new DoorEventProcessor()));
         homeEventsObserver.runEventsCycle(smartHome);
     }
+    AbstractApplicationContext context = new AnnotationConfigApplicationContext(MyConfiguration.class);
+    SensorEventsManager sensorEventsManager = context.getBean(SensorEventsManager.class);
+       sensorEventsManager.start();
+
+
 
 }

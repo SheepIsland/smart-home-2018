@@ -21,9 +21,13 @@ public class DangerSignalState implements AlarmState {
             System.out.println("Alarm is deactivated");
             return new DeactivatedState();
         } else {
-            System.out.println("Alarm is in danger!!!");
-            return this;
+            return danger();
         }
     }
 
+    @Override
+    public AlarmState danger() {
+        System.out.println("Alarm is in danger!!!");
+        return this;
+    }
 }
