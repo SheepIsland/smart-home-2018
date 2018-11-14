@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/smart-home.iml" filepath="$PROJECT_DIR$/smart-home.iml" />
+      <module fileurl="file://$USER_HOME$/IdeaProjects/smarthomeEvents/smarthome-events.iml" filepath="$USER_HOME$/IdeaProjects/smarthomeEvents/smarthome-events.iml" />
     </modules>
   </component>
 </project>
