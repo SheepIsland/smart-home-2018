@@ -1,4 +1,4 @@
-package ru.sbt.mipt.oop.alarm;
+package ru.sbt.mipt.oop.elements.alarm;
 
 import ru.sbt.mipt.oop.Action;
 import ru.sbt.mipt.oop.Actionable;
@@ -13,6 +13,8 @@ public class Alarm implements Actionable, Printable {
     private AlarmState state;
     private final String id;
 
+    //TODO при считывании с json alarm state = null
+
     public Alarm(String password, String id) {
         this.password = password;
         this.state = new DeactivatedState();
@@ -22,7 +24,6 @@ public class Alarm implements Actionable, Printable {
     public String getId() {
         return id;
     }
-
 
     public void activate(String inputCode){
         state = state.activate(inputCode, password);

@@ -1,6 +1,7 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.event;
 
 import com.coolcompany.smarthome.events.SensorEventsManager;
+import ru.sbt.mipt.oop.event.processor.EventProcessor;
 
 /**
  * Created by Violetta on 02/11/2018.

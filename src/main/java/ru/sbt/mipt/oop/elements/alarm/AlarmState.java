@@ -1,4 +1,4 @@
-package ru.sbt.mipt.oop.alarm;
+package ru.sbt.mipt.oop.elements.alarm;
 
 /**
  * Created by Violetta on 25/10/2018.

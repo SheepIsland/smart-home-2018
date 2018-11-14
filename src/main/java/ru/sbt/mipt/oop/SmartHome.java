@@ -1,6 +1,7 @@
 package ru.sbt.mipt.oop;
 
-import ru.sbt.mipt.oop.alarm.Alarm;
+import ru.sbt.mipt.oop.elements.alarm.Alarm;
+import ru.sbt.mipt.oop.elements.Room;
 
 import java.util.ArrayList;
 import java.util.Collection;

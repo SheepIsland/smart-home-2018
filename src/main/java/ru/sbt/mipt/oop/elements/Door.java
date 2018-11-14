@@ -1,38 +1,33 @@
-package ru.sbt.mipt.oop.light;
+package ru.sbt.mipt.oop.elements;
 
 import ru.sbt.mipt.oop.Action;
 import ru.sbt.mipt.oop.Actionable;
 import ru.sbt.mipt.oop.Printable;
 
-public class Light implements Actionable, Printable {
-    private boolean isOn;
+public class Door implements Actionable, Printable {
     private final String id;
+    private boolean isOpen;
 
-    public Light(String id, boolean isOn) {
+    public Door(boolean isOpen, String id) {
+        this.isOpen = isOpen;
         this.id = id;
-        this.isOn = isOn;
-    }
-
-    public boolean isOn() {
-        return isOn;
     }
 
     public String getId() {
         return id;
     }
 
-    public void setOn(boolean on) {
-        isOn = on;
+    public void setOpen(boolean open) {
+        isOpen = open;
     }
 
     @Override
     public void executeAction(Action action) {
-
         action.execute(this);
     }
 
     @Override
     public void printToSystemOut() {
-        System.out.println("Lignt:" + getId());
+        System.out.println("Door" + getId());
     }
 }

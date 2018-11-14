@@ -1,17 +1,12 @@
-package ru.sbt.mipt.oop.alarm;
+package ru.sbt.mipt.oop.elements.alarm;
 
 /**
  * Created by Violetta on 25/10/2018.
  */
-public class DangerSignalState implements AlarmState {
-
-    public DangerSignalState() {
-        System.out.println("SENDING SMS!!! HPUSE IS IN DANGER!!!");
-    }
-
+public class ActivatedState implements AlarmState {
     @Override
     public AlarmState activate(String inputCode, String password) {
-        System.out.println("Alarm is in danger!!!");
+        System.out.println("Alarm is already activated");
         return this;
     }
 
@@ -28,6 +23,11 @@ public class DangerSignalState implements AlarmState {
     @Override
     public AlarmState danger() {
         System.out.println("Alarm is in danger!!!");
-        return this;
+        return new DangerSignalState();
+    }
+
+    @Override
+    public boolean isActivated() {
+        return true;
     }
 }

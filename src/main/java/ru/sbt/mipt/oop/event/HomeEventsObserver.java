@@ -1,4 +1,7 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.event;
+
+import ru.sbt.mipt.oop.SmartHome;
+import ru.sbt.mipt.oop.event.processor.EventProcessor;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -6,7 +9,7 @@ import java.util.Collection;
 /**
  * Created by Violetta on 25/10/2018.
  */
-public class HomeEventsObserver implements EventManager{
+public class HomeEventsObserver implements EventManager {
     private final Collection<EventProcessor> eventProcessors = new ArrayList<>();
     private SensorEventProvider sensorEventProvider;
 

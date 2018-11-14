@@ -1,7 +1,6 @@
-package ru.sbt.mipt.oop.alarm;
+package ru.sbt.mipt.oop.event.processor;
 
-import ru.sbt.mipt.oop.EventProcessor;
-import ru.sbt.mipt.oop.SensorEvent;
+import ru.sbt.mipt.oop.event.SensorEvent;
 import ru.sbt.mipt.oop.SmartHome;
 
 /**

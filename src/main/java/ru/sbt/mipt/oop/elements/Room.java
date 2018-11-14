@@ -1,12 +1,13 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.elements;
 
-import ru.sbt.mipt.oop.alarm.Alarm;
-import ru.sbt.mipt.oop.door.Door;
-import ru.sbt.mipt.oop.light.Light;
+import ru.sbt.mipt.oop.Action;
+import ru.sbt.mipt.oop.Actionable;
+import ru.sbt.mipt.oop.Printable;
+import ru.sbt.mipt.oop.elements.alarm.Alarm;
 
 import java.util.Collection;
 
-public class Room implements Actionable, Printable{
+public class Room implements Actionable, Printable {
     private Collection<Light> lights;
     private Collection<Door> doors;
     private String name;

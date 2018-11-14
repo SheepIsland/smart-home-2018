@@ -1,4 +1,4 @@
-package ru.sbt.mipt.oop;
+package ru.sbt.mipt.oop.event;
 
 /**
  * Created by Violetta on 04/10/2018.

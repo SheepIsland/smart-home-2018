@@ -1,10 +1,18 @@
 package ru.sbt.mipt.oop;
 
-import ru.sbt.mipt.oop.alarm.AlarmActivatedEventProcessor;
-import ru.sbt.mipt.oop.door.DoorEventProcessor;
-import ru.sbt.mipt.oop.light.LightsEventProcessor;
+import ru.sbt.mipt.oop.event.HomeEventsObserver;
+import ru.sbt.mipt.oop.event.RandomSensorEventProvider;
+import ru.sbt.mipt.oop.event.processor.AlarmActivatedEventProcessor;
+import ru.sbt.mipt.oop.event.processor.DoorEventProcessor;
+import ru.sbt.mipt.oop.homeloader.FileSmartHomeLoader;
+import ru.sbt.mipt.oop.homeloader.SmartHomeLoader;
+import ru.sbt.mipt.oop.event.processor.LightsEventProcessor;
 
 import java.io.IOException;
+
+
+//TODO 1. перенести на Spring
+//TODO 2. покрыть Unit тестами все
 
 public class Application {
 
@@ -18,10 +26,5 @@ public class Application {
         homeEventsObserver.registerEventProcessor( new AlarmActivatedEventProcessor(new DoorEventProcessor()));
         homeEventsObserver.runEventsCycle(smartHome);
     }
-    AbstractApplicationContext context = new AnnotationConfigApplicationContext(MyConfiguration.class);
-    SensorEventsManager sensorEventsManager = context.getBean(SensorEventsManager.class);
-       sensorEventsManager.start();
-
-
 
 }
