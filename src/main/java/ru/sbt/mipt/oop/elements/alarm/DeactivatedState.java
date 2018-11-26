@@ -8,7 +8,7 @@ public class DeactivatedState implements AlarmState {
     @Override
     public AlarmState activate(String inputCode, String password) {
         if (inputCode.equals(password)) {
-            System.out.println("Alarm is deactivated");
+            System.out.println("Alarm is activated");
             return new ActivatedState();
         } else {
             return danger();

@@ -17,6 +17,10 @@ public class Door implements Actionable, Printable {
         return id;
     }
 
+    public boolean isOpen(){
+        return isOpen;
+    }
+
     public void setOpen(boolean open) {
         isOpen = open;
     }

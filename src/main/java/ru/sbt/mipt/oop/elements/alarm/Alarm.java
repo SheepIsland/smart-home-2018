@@ -8,7 +8,6 @@ import ru.sbt.mipt.oop.Printable;
  * Created by Violetta on 25/10/2018.
  */
 
-//TODO - Actiomable???
 public class Alarm implements Actionable, Printable {
 
     private String password;

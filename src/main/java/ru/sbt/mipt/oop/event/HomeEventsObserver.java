@@ -17,9 +17,18 @@ public class HomeEventsObserver implements EventManager {
         this.sensorEventProvider = sensorEventProvider;
     }
 
+    public HomeEventsObserver(){}
+
     @Override
     public void registerEventProcessor(EventProcessor eventProcessor) {
         eventProcessors.add(eventProcessor);
+    }
+
+    public void runSensorEvent(SmartHome smartHome, SensorEvent event){
+        System.out.println("Got event: " + event);
+        for (EventProcessor eventProcessor : eventProcessors) {
+            eventProcessor.processEvent(smartHome, event);
+        }
     }
 
     public void runEventsCycle(SmartHome smartHome) {

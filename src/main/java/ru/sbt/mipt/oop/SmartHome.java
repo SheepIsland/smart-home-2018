@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class SmartHome {
-    Collection<Room> rooms;
+    private Collection<Room> rooms;
+    //private Alarm alarm = new Alarm("1","1");
     private Alarm alarm;
 
     public SmartHome() {
@@ -18,8 +19,9 @@ public class SmartHome {
         this.rooms = rooms;
     }
 
-    public Collection<Room> getRooms() {
-        return rooms;
+    public SmartHome(Collection<Room> rooms, Alarm alarm) {
+        this.rooms = rooms;
+        this.alarm = alarm;
     }
 
     public void executeAction(Action action) {

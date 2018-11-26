@@ -30,4 +30,9 @@ public class DangerSignalState implements AlarmState {
         System.out.println("Alarm is in danger!!!");
         return this;
     }
+
+    @Override
+    public boolean isActivated() {
+        return true;
+    }
 }
