@@ -1,10 +1,17 @@
 package ru.sbt.mipt.oop;
 
+import ru.sbt.mipt.oop.elements.Light;
 import ru.sbt.mipt.oop.elements.alarm.Alarm;
 import ru.sbt.mipt.oop.elements.Room;
+import ru.sbt.mipt.oop.event.HomeEventsObserver;
+import ru.sbt.mipt.oop.event.SensorEvent;
+import ru.sbt.mipt.oop.event.SensorEventProvider;
 
 import java.util.ArrayList;
 import java.util.Collection;
+
+import static ru.sbt.mipt.oop.event.SensorEventType.LIGHT_OFF;
+import static ru.sbt.mipt.oop.event.SensorEventType.LIGHT_ON;
 
 public class SmartHome {
     private Collection<Room> rooms;
@@ -33,6 +40,23 @@ public class SmartHome {
 
     public boolean isAlarmActivated(){
         return alarm.isActivated();
+    }
+
+
+    public void turnOffAllLights(boolean flag){
+        for (Room room : rooms) {
+            for (Light light : room.getLights()) {
+                SensorEvent event;
+                if (flag) {
+                    light.setOn(false);
+                    event = new SensorEvent(LIGHT_OFF, light.getId());
+                } else {
+                    light.setOn(true);
+                    event = new SensorEvent(LIGHT_ON, light.getId());
+                }
+                new HomeEventsObserver().runSensorEvent(this,event);
+            }
+        }
     }
 
     public Alarm getAlarm() {

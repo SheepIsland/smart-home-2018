@@ -1,11 +1,15 @@
-package ru.sbt.mipt.oop.elements.remoteControl;
-
 import org.junit.Test;
+import ru.sbt.mipt.oop.SmartHome;
+import ru.sbt.mipt.oop.elements.Door;
 import ru.sbt.mipt.oop.elements.Light;
+import ru.sbt.mipt.oop.elements.Room;
 import ru.sbt.mipt.oop.elements.alarm.Alarm;
+import ru.sbt.mipt.oop.elements.remoteControl.ControlPanel;
 import ru.sbt.mipt.oop.elements.remoteControl.command.*;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertFalse;
@@ -22,17 +26,24 @@ public class ControlPanelTest {
         String alarmId = "1";
         String alarmPass = "1111";
         Alarm alarm = new Alarm(alarmPass,alarmId);
-        List<Light> lights = new ArrayList<>();
+        Collection<Room> rooms = new ArrayList<>();
+        Collection<Light> lights = new ArrayList<>();
         String lightOffId = "1";
         String lightOnId = "2";
         Light lightOff = new Light(lightOffId, true);
         Light lightOn = new Light(lightOnId, false);
         lights.add(lightOff);
         lights.add(lightOn);
+        Room room = new Room(
+                lights,
+                Collections.singletonList(new Door(true, "1")),
+                "room");
+        rooms.add(room);
+        SmartHome smartHome = new SmartHome(rooms);
         RemoteControlCommand activateAlarm = new ActivateAlarmCommand(alarm);
         RemoteControlCommand activateDangerAlarm = new ActivateDangerStateAlarmCommand(alarm);
-        RemoteControlCommand swichOffLights = new SwitchOffAllLightCommand(lights);
-        RemoteControlCommand swichOnLights = new SwitchOnAllLightCommand(lights);
+        RemoteControlCommand swichOffLights = new SwitchOffAllLightCommand(smartHome);
+        RemoteControlCommand swichOnLights = new SwitchOnAllLightCommand(smartHome);
         controlPanel.setCommand("A", activateAlarm);
         controlPanel.setCommand("B", activateDangerAlarm);
         controlPanel.setCommand("1", swichOffLights);

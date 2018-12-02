@@ -1,4 +1,4 @@
-package ru.sbt.mipt.oop.event;
+package java;
 
 import org.junit.Test;
 import ru.sbt.mipt.oop.SmartHome;
@@ -6,6 +6,10 @@ import ru.sbt.mipt.oop.elements.Door;
 import ru.sbt.mipt.oop.elements.Light;
 import ru.sbt.mipt.oop.elements.Room;
 import ru.sbt.mipt.oop.elements.alarm.Alarm;
+import ru.sbt.mipt.oop.event.HomeEventsObserver;
+import ru.sbt.mipt.oop.event.RandomSensorEventProvider;
+import ru.sbt.mipt.oop.event.SensorEvent;
+import ru.sbt.mipt.oop.event.SensorEventType;
 import ru.sbt.mipt.oop.event.processor.AlarmActivatedEventProcessor;
 import ru.sbt.mipt.oop.event.processor.DoorEventProcessor;
 import ru.sbt.mipt.oop.event.processor.LightsEventProcessor;
