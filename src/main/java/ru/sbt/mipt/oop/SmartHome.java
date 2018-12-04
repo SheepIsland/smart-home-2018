@@ -46,15 +46,11 @@ public class SmartHome {
         executeAction(object -> {
             if (object instanceof Light) {
                 Light light = (Light) object;
-                SensorEvent event;
                 if (flag) {
                     light.setOn(false);
-                    event = new SensorEvent(LIGHT_OFF, light.getId());
                 } else {
                     light.setOn(true);
-                    event = new SensorEvent(LIGHT_ON, light.getId());
                 }
-                SensorEventExecutor.executeAction(event);
             }
         });
     }
