@@ -3,14 +3,9 @@ package ru.sbt.mipt.oop;
 import ru.sbt.mipt.oop.elements.Light;
 import ru.sbt.mipt.oop.elements.alarm.Alarm;
 import ru.sbt.mipt.oop.elements.Room;
-import ru.sbt.mipt.oop.event.SensorEvent;
-import ru.sbt.mipt.oop.event.SensorEventExecutor;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
-import static ru.sbt.mipt.oop.event.SensorEventType.LIGHT_OFF;
-import static ru.sbt.mipt.oop.event.SensorEventType.LIGHT_ON;
 
 public class SmartHome {
     private Collection<Room> rooms;
