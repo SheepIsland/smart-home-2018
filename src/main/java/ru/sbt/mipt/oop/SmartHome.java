@@ -3,9 +3,8 @@ package ru.sbt.mipt.oop;
 import ru.sbt.mipt.oop.elements.Light;
 import ru.sbt.mipt.oop.elements.alarm.Alarm;
 import ru.sbt.mipt.oop.elements.Room;
-import ru.sbt.mipt.oop.event.HomeEventsObserver;
 import ru.sbt.mipt.oop.event.SensorEvent;
-import ru.sbt.mipt.oop.event.SensorEventProvider;
+import ru.sbt.mipt.oop.event.SensorEventExecutor;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -44,8 +43,9 @@ public class SmartHome {
 
 
     public void turnOffAllLights(boolean flag){
-        for (Room room : rooms) {
-            for (Light light : room.getLights()) {
+        executeAction(object -> {
+            if (object instanceof Light) {
+                Light light = (Light) object;
                 SensorEvent event;
                 if (flag) {
                     light.setOn(false);
@@ -54,9 +54,9 @@ public class SmartHome {
                     light.setOn(true);
                     event = new SensorEvent(LIGHT_ON, light.getId());
                 }
-                new HomeEventsObserver().runSensorEvent(this,event);
+                SensorEventExecutor.executeAction(event);
             }
-        }
+        });
     }
 
     public Alarm getAlarm() {

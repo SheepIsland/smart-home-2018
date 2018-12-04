@@ -1,5 +1,3 @@
-package java;
-
 import org.junit.Test;
 import ru.sbt.mipt.oop.SmartHome;
 import ru.sbt.mipt.oop.elements.Door;
